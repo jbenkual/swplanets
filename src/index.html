@@ -15,8 +15,8 @@
 					<form>
 						<textarea class="form-control" placeholder="Whats happening?" ng-model="t.tweet" ng-trim="false"></textarea>
 					</form>
-					<p class="help-block">
-						<span ng-class="{'red': t.invalidTweetLength()}">{{140 - t.tweet.length}}</span>
+					<p class="help-block text-right">
+						<span ng-class="{'red': t.invalidTweetLength()}">{{t.remainingCharacters()}}</span>
 					</p>
 					<button type="submit" class="btn btn-success" ng-disabled="t.invalidTweetLength()">Tweet</button>
 				</div>
