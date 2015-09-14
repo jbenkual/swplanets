@@ -13,12 +13,12 @@
 			<div class="col-sm-8 col-sm-offset-2">
 				<div class="well">
 					<form>
-						<textarea class="form-control" placeholder="Whats happening?" ng-model="t.tweet" ng-trim="false"></textarea>
+						<textarea class="form-control" placeholder="Whats happening?" ng-model="tweet" ng-trim="false"></textarea>
 					</form>
 					<p class="help-block text-right">
-						<span ng-class="{'red': t.invalidTweetLength()}">{{t.remainingCharacters()}}</span>
+						<span ng-class="{'red': invalidTweetLength()}">{{remainingCharacters()}}</span>
 					</p>
-					<button type="submit" class="btn btn-success" ng-disabled="t.invalidTweetLength()">Tweet</button>
+					<button type="submit" class="btn btn-success" ng-disabled="invalidTweetLength()">Tweet</button>
 				</div>
 			</div>
 		</div>

@@ -4,14 +4,14 @@ require('../css/index.css');
 
 let app = angular.module("twitterClone", []);
 
-app.controller("TweetCtrl", function () {
-	this.tweet = '';
+app.controller("TweetCtrl", function ($scope) {
+	$scope.tweet = '';
 
-	this.invalidTweetLength = function () { 
-		return this.tweet.length === 0 || this.remainingCharacters() < 0;
+	$scope.invalidTweetLength = function () { 
+		return $scope.tweet.length === 0 || $scope.remainingCharacters() < 0;
 	}
 
-	this.remainingCharacters = function () {
-		return 140 - this.tweet.length;
+	$scope.remainingCharacters = function () {
+		return 140 - $scope.tweet.length;
 	}
 });
