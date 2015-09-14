@@ -2,13 +2,27 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>AngTest</title>
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Where My Tweets At?</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-
-<body>
-	<h1>Hello World</h1>
-
+<body ng-app ng-init="tweet = '';">
+	<div class="container">
+		<div class="row>"
+			<div class="col-sm-8 col-sm-offset-2">
+				<div class="well">
+					<form>
+						<textarea class="form-control" placeholder="Whats happening?" ng-model="tweet" ng-trim="false"></textarea>
+					</form>
+					<p class="help-block">
+						<span ng-class="{'red':tweet.length > 140}">{{140 - tweet.length}}</span>
+					</p>
+					<button type="submit" class="btn btn-success" ng-disabled="tweet.length === 0 || tweet.length > 140">Tweet</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>

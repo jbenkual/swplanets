@@ -1,4 +1,3 @@
 'use strict';
-
-let hot = "HOT";
-console.log(`ES2015 is ${hot}`);
+//import angular from "angular";
+require('../css/index.css');
