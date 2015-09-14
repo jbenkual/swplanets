@@ -7,25 +7,24 @@
 	<title>Where My Tweets At?</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-<body ng-app ng-init="tweet = '';">
+<body ng-app="twitterClone" ng-controller="TweetCtrl as t">
 	<div class="container">
 		<div class="row>"
 			<div class="col-sm-8 col-sm-offset-2">
 				<div class="well">
 					<form>
-						<textarea class="form-control" placeholder="Whats happening?" ng-model="tweet" ng-trim="false"></textarea>
+						<textarea class="form-control" placeholder="Whats happening?" ng-model="t.tweet" ng-trim="false"></textarea>
 					</form>
 					<p class="help-block">
-						<span ng-class="{'red':tweet.length > 140}">{{140 - tweet.length}}</span>
+						<span ng-class="{'red': t.invalidTweetLength()}">{{140 - t.tweet.length}}</span>
 					</p>
-					<button type="submit" class="btn btn-success" ng-disabled="tweet.length === 0 || tweet.length > 140">Tweet</button>
+					<button type="submit" class="btn btn-success" ng-disabled="t.invalidTweetLength()">Tweet</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="./js/bundle.js"></script>
 </body>
