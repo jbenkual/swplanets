@@ -13,7 +13,7 @@
 			<div class="col-sm-8 col-sm-offset-2">
 				<div class="well">
 					<form>
-						<textarea class="form-control" placeholder="Whats happening?" ng-model="tweet" ng-trim="false"></textarea>
+						<textarea class="form-control" placeholder="Whats happening?" ng-model="tweet" ng-trim="false" myEnter:"sendTweet()"></textarea>
 					</form>
 					<p class="help-block text-right">
 						<span ng-class="{'red': invalidTweetLength()}">{{remainingCharacters()}}</span>
@@ -21,9 +21,16 @@
 					<button type="button" class="btn btn-success" ng-disabled="invalidTweetLength()" ng-click="sendTweet()">Tweet</button>
 				</div>
 			</div>
+			<div class="alert alert-danger fade in" ng-if="tweetsEmpty()">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				<strong>Slacker!</strong> You haven't participated in the greater twittersphere previous to this momement in time! Rectfiy this situation post-haste!
+			</div>
 			<ul class="list-unstyled">
 					<li ng-repeat="t in tweetList track by $index">{{t}}</li>
 			</ul>
+
+			<img ng-src="{{LOOP}}" ng-click="LOOP=''" ng-show="LOOP"/>
+
 		</div>
 	</div>
 
