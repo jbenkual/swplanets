@@ -5,3 +5,8 @@ textarea {
 .red {
 	color: red;
 }
+
+
+.list-group-item {
+	width: 300px;
+}

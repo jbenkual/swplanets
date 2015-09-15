@@ -5,23 +5,27 @@ require('../css/index.css');
 
 let app = angular.module("StarWars", []);
 
-app.controller("swctrl", function ($scope, $http) {
+app.run(() => {
+
+});
+
+app.controller("swctrl", function ($scope, planetsService) {
 	$scope.show = false;
 	$scope.planetList = [];
-	let count = 0;
-	$scope.getData = (url) => {
-		console.log("loading info");
+	$scope.hide = () => $scope.show = !$scope.show;
+	planetsService.getPlanets("http://swapi.co/api/planets/",  (result) => {
+		$scope.planetList.push.apply($scope.planetList, result);
+	});
+});
+
+
+app.service("planetsService", function ($http) {
+	this.getPlanets = (url, cb) => {
 		$http.get(url).success( (data) => {
-			console.log(data);
-			$scope.planetList.push.apply($scope.planetList, data.results);
-			if(data.next !== "null") {
-				$scope.getData(data.next);
+			cb(data.results);
+			if(data.next !== null) {
+				this.getPlanets(data.next, cb);
 			}
 		});
 	};
-
-	$scope.hide = () => $scope.show = !$scope.show;
-
-	$scope.getData("http://swapi.co/api/planets/");
-
 });

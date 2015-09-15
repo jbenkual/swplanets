@@ -10,13 +10,13 @@
 <body ng-app="StarWars" ng-controller="swctrl">
 	<div class="container">
 		<div class="row>"
-			<div class="col-sm-8 col-sm-offset-2">
+			<div class="col-sm-4 col-sm-offset-6">
 				<div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" ng-click="hide()"> Planets
   <span class="caret"></span></button>
-  <ul class="list" ng-if="show">
+  <ul class="list list-group" ng-if="show">
 				<div class="accordion" id="accordion2">
-					<li ng-repeat="p in planetList track by $index">
+					<li class="list-group-item" ng-repeat="p in planetList track by $index">
 				  <div class="accordion-group" >
 				    <div class="accordion-heading">
 				      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$index}}">
@@ -27,7 +27,7 @@
 				      <div class="accordion-inner">
 				      	<div class="thumbnail">
 				      		<div class="caption">
-						      	<h3>Name: {{p.name}}</h3>
+						      	<h3>{{p.name}}</h3>
 						      	<p>Rotation Period: {{p.rotation_period}} Standard Hours</p>
 						      	<p>Orbital Period: {{p.orbital_period}} Standard Days</p>
 						      	<p>Diameter: {{p.diameter}} kilometers</p>
