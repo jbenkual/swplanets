@@ -11,8 +11,13 @@
 	<div class="container">
 		<div class="row>"
 			<div class="col-sm-8 col-sm-offset-2">
+				<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" ng-click="hide()"> Planets
+  <span class="caret"></span></button>
+  <ul class="list" ng-if="show">
 				<div class="accordion" id="accordion2">
-				  <div class="accordion-group" ng-repeat="p in planetList track by $index">
+					<li ng-repeat="p in planetList track by $index">
+				  <div class="accordion-group" >
 				    <div class="accordion-heading">
 				      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$index}}">
 				        {{p.name}}
@@ -35,7 +40,10 @@
 				      </div>
 				    </div>
 				  </div>
+				  </li>
 				</div>
+				 </ul>
+</div>
 			</div>
 		</div>
 	</div>

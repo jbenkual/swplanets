@@ -6,6 +6,7 @@ require('../css/index.css');
 let app = angular.module("StarWars", []);
 
 app.controller("swctrl", function ($scope, $http) {
+	$scope.show = false;
 	$scope.planetList = [];
 	let count = 0;
 	$scope.getData = (url) => {
@@ -18,6 +19,8 @@ app.controller("swctrl", function ($scope, $http) {
 			}
 		});
 	};
+
+	$scope.hide = () => $scope.show = !$scope.show;
 
 	$scope.getData("http://swapi.co/api/planets/");
 
