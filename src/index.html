@@ -4,33 +4,39 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Where My Tweets At?</title>
+	<title>Star Wars</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-<body ng-app="twitterClone" ng-controller="TweetCtrl as t">
+<body ng-app="StarWars" ng-controller="swctrl">
 	<div class="container">
 		<div class="row>"
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="well">
-					<form>
-						<textarea class="form-control" placeholder="Whats happening?" ng-model="tweet" ng-trim="false" myEnter:"sendTweet()"></textarea>
-					</form>
-					<p class="help-block text-right">
-						<span ng-class="{'red': invalidTweetLength()}">{{remainingCharacters()}}</span>
-					</p>
-					<button type="button" class="btn btn-success" ng-disabled="invalidTweetLength()" ng-click="sendTweet()">Tweet</button>
+				<div class="accordion" id="accordion2">
+				  <div class="accordion-group" ng-repeat="p in planetList track by $index">
+				    <div class="accordion-heading">
+				      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$index}}">
+				        {{p.name}}
+				      </a>
+				    </div>
+				    <div id="collapse{{$index}}" class="accordion-body collapse">
+				      <div class="accordion-inner">
+				      	<div class="thumbnail">
+				      		<div class="caption">
+						      	<h3>Name: {{p.name}}</h3>
+						      	<p>Rotation Period: {{p.rotation_period}} Standard Hours</p>
+						      	<p>Orbital Period: {{p.orbital_period}} Standard Days</p>
+						      	<p>Diameter: {{p.diameter}} kilometers</p>
+						        <p>Climate: {{p.climate}}</p>
+						        <p>Gravity: {{p.gravity}}</p>
+						        <p>Terrain: {{p.terrain}}</p>
+						        <p>Surface Water: {{p.surface_water}}</p>
+						        <p>Population: {{p.population}}</p>
+				      	</div>
+				      </div>
+				    </div>
+				  </div>
 				</div>
 			</div>
-			<div class="alert alert-danger fade in" ng-if="tweetsEmpty()">
-				<a href="#" class="close" data-dismiss="alert">&times;</a>
-				<strong>Slacker!</strong> You haven't participated in the greater twittersphere previous to this momement in time! Rectfiy this situation post-haste!
-			</div>
-			<ul class="list-unstyled">
-					<li ng-repeat="t in tweetList track by $index">{{t}}</li>
-			</ul>
-
-			<img ng-src="{{LOOP}}" ng-click="LOOP=''" ng-show="LOOP"/>
-
 		</div>
 	</div>
 
